@@ -97,6 +97,8 @@ def main():
 
         command_received = data.get('data', 'Unknown')
 
+        logging.debug('received Post.')
+
         if command_received in command_handler_map:
             handler = command_handler_map[command_received]
 
@@ -148,6 +150,7 @@ def main():
 
         if data.get('data_tag', '') != '':
             socketio.emit(data['data_tag'], data)        
+            print('Received data from local server. Proceed to relaying.')
 
     @app.route('/send_message')
     def send_message():
