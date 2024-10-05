@@ -75,7 +75,7 @@ def publish_data_repeat():
 class MasterHandler:
 
     def publishData():        
-        data_str = '123\n12312\n <br>123'
+        data_str = '123\n12312\n <br>123<br>'
         current_time = time.localtime()
         time_string = time.strftime("%Y-%m-%d %H:%M:%S", current_time)
 
@@ -149,11 +149,11 @@ def main():
         # return jsonify({'message': 'Request received', 'data_received': data, 'data': response})
 
 
-    if utils.get_env() == 'prod':
-        PrivateCache.sio.connect('http://eatoomuch.com:5000')    
-    else:
-        PrivateCache.sio.connect('http://localhost:5000') 
-
+    port = utils.get_websocket_port()
+    server_url = utils.get_server_url()
+    websocket_url = f'http://{server_url}:{port}'
+    
+    PrivateCache.sio.connect(websocket_url) 
 
     thread_data_pub = threading.Thread(target=publish_data_repeat)
     thread_data_pub.start()

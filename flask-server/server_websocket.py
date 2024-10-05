@@ -6,6 +6,7 @@ from flask_socketio import SocketIO, send
 from flask_cors import CORS, cross_origin
 import json
 import eventlet
+import utils
 
 
 
@@ -159,7 +160,8 @@ def main():
         return "Message sent to all clients!"
 
     # app.run(host='0.0.0.0', port=5000, debug=True)
-    eventlet.wsgi.server(eventlet.listen(('0.0.0.0', 5000)), app)
+    port = utils.get_websocket_port()
+    eventlet.wsgi.server(eventlet.listen(('0.0.0.0', port)), app)
 
 
 if __name__ == '__main__':
