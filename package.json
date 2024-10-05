@@ -31,7 +31,7 @@
     "start-all-built": "concurrently \"npm run serve\" \"npm run start-flask\"",
     "start-flask": "cd flask-server && python server_websocket.py",
     "start-backend": "cd flask-server && python server.py",
-    "serve": "serve -s build -p 3015"
+    "serve": "serve -s build -p 3016"
   },
   "eslintConfig": {
     "extends": [

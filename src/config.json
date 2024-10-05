@@ -1,6 +1,6 @@
 {
     "env": "dev",
     "websocket_port": 5001,
-    "server_url": "localhost"
+    "server_url": "eatoomuch.com"
 }
   
